@@ -1,0 +1,27 @@
+profile: snr05
+repeats: 2
+algorithm: stardist
+stage: selection
+params:
+  min_mean_intensity:
+  - 0
+  - 0.05
+  - 0.1
+  - 0.15
+  - 0.175
+  - 0.2
+  - 0.225
+  - 0.25
+  - 0.275
+  - 0.3
+  - 0.325
+  - 0.35
+  - 0.4
+overrides:
+  max_area: 1000
+  max_eccentricity: 1.0
+  min_mean_intensity: 0
+  prob_threshold: 0.05
+  max_mean_intensity: 0.4
+tuning_data_dir: data_simulation/tuning/final_2026-10-01/snr05
+results_dir: results/sweeps/final_2026-10-01/snr05/stardist/min_mean_intensity

@@ -1,0 +1,5 @@
+Class,Raw_Count,Filtered_Count,Retention,Recall_Raw,Recall_Filtered
+Singular Interaction,996,996,1.0,0.996,0.996
+Aggregate,500,500,1.0,1.0,1.0
+Mobile Contaminants,44,8,0.18181818181818182,0.088,0.016
+Pure Noise,3905,1070,0.2740076824583867,0.0,0.0

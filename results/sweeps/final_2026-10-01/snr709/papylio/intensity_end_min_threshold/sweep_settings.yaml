@@ -1,0 +1,22 @@
+profile: snr709
+repeats: 2
+algorithm: papylio
+stage: selection
+params:
+  intensity_end_min_threshold:
+  - 0
+  - 200
+  - 300
+  - 400
+  - 500
+  - 600
+  - 800
+  - 1000
+  - 1500
+overrides:
+  intensity_end_min_threshold: 0
+  neighbourhood_size_max: 5
+  fraction_difference: 0.2
+  intensity_total_max_threshold: 4000
+tuning_data_dir: data_simulation/tuning/final_2026-10-01/snr709
+results_dir: results/sweeps/final_2026-10-01/snr709/papylio/intensity_end_min_threshold

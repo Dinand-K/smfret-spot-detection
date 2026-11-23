@@ -1,0 +1,24 @@
+profile: snr03
+repeats: 2
+algorithm: stardist
+stage: detection
+params:
+  prob_threshold:
+  - 0.01
+  - 0.02
+  - 0.03
+  - 0.04
+  - 0.05
+  - 0.06
+  - 0.07
+  - 0.1
+  - 0.15
+  - 0.2
+  - 0.3
+  - 0.5
+overrides:
+  max_area: 1000
+  max_eccentricity: 1.0
+  min_mean_intensity: 0
+tuning_data_dir: data_simulation/tuning/final_2026-10-01/snr03
+results_dir: results/sweeps/final_2026-10-01/snr03/stardist/prob_threshold

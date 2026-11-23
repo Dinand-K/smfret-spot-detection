@@ -1,0 +1,8 @@
+#Snakemake settings for the parameter sweeps, separate from profiles/default (which is used in the other pipeline runs, either manual or through the run_all).
+#snakemake -s sweep/sweep.smk --workflow-profile profiles/sweep --config sweep_config=...
+cores: 4
+use-conda: true
+rerun-incomplete: true
+
+resources:
+  - serial_lock=1

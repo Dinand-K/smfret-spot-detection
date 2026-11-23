@@ -1,0 +1,25 @@
+profile: snr2
+repeats: 2
+algorithm: papylio
+stage: selection
+params:
+  intensity_total_max_threshold:
+  - 2500
+  - 3000
+  - 3500
+  - 4000
+  - 4500
+  - 5000
+  - 5500
+  - 6000
+  - 6500
+  - 7000
+  - 7500
+  - 8000
+  - 20000
+overrides:
+  intensity_end_min_threshold: 0
+  neighbourhood_size_max: 5
+  fraction_difference: 0.3
+tuning_data_dir: data_simulation/tuning/final_2026-10-01/snr2
+results_dir: results/sweeps/final_2026-10-01/snr2/papylio/intensity_total_max_threshold

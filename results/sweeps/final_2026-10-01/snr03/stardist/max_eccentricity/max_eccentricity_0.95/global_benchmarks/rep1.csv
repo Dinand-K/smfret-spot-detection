@@ -1,0 +1,4 @@
+,Raw,Filtered
+Global_Precision,0.4996505939902166,0.75
+Global_Recall,0.715,0.675
+Global_F1_Score,0.588235294117647,0.7105263157894738

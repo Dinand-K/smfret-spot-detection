@@ -1,0 +1,63 @@
+###Global Pipeline Settings###
+repeats: 1
+matching_threshold: 2
+use_real_data: true  # True for Real Data, false for Simulation
+#if use_real_data, set repeats to ONE!!
+
+###Simulation Configuration###
+simulation:
+  # Real data: only class activation + labels are used; simulation parameters are not needed except for display names of used interaction types
+  stationary:
+    activate: true
+    display_name: "Target Interactions"
+  aggregate:
+    activate: true
+    display_name: "Off-Target Interactions"
+  moving:
+    activate: false
+
+
+
+###Algorithm Configuration###
+algorithms:
+  papylio:
+    activate: true
+    display_name: "Papylio"
+    serial_lock_cost: 1
+    threads: 1
+
+    # all algorithm settings copied from snr709 ( profile tuned to resemble this video)
+    params:
+      max_rolling_donor_intensity: 4000  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      min_mean_donor_intensity: 300  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      fraction_difference: 0.2  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      neighbourhood_size_min: 10
+      neighbourhood_size_max: 5  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      projection_max_frame: 500
+      edge_margin: 10
+      gaussian_fit_width: 9
+      rolling_window_size: 20
+
+  stardist:
+    activate: true
+    display_name: "StarDist"
+    serial_lock_cost: 0
+    threads: 4
+
+    params:
+      channel_index: 0
+      edge_margin: 10
+      norm_percentile_min: 1.0
+      norm_percentile_max: 99.8
+      axis_norm: [0, 1]
+      model_name: '2D_versatile_fluo'
+      prob_threshold: 0.2  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      nms_threshold: 0.3 # 2D_versatile_fluo model default
+      # selection filters (mask shape and intensity) + tophat_radius (background removal before detection)
+      tophat_radius: 14 #about 1.5x feature size.
+      min_area: 10
+      max_area: 60  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      min_mean_intensity: 0  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      max_mean_intensity: 0.3  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      max_eccentricity: 0.9  # from snr709 (tuned by run_all.py, final_2026-10-01)
+      min_solidity: 0.7

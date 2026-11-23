@@ -1,0 +1,6 @@
+,Raw_Count,Raw_Count,Raw_Count,Filtered_Count,Filtered_Count,Filtered_Count,Retention,Retention,Retention,Recall_Raw,Recall_Raw,Recall_Raw,Recall_Filtered,Recall_Filtered,Recall_Filtered
+,mean,ci_low,ci_high,mean,ci_low,ci_high,mean,ci_low,ci_high,mean,ci_low,ci_high,mean,ci_low,ci_high
+Class,,,,,,,,,,,,,,,
+Off-Target Interactions,80.0,,,48.0,,,0.6,,,0.9411764705882352,,,0.5647058823529412,,
+Pure Noise,14.0,,,11.0,,,0.7857142857142857,,,0.0,,,0.0,,
+Target Interactions,210.0,,,132.0,,,0.6285714285714286,,,0.945945945945946,,,0.5945945945945946,,

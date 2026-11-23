@@ -1,0 +1,7 @@
+,Raw_Count,Raw_Count,Raw_Count,Filtered_Count,Filtered_Count,Filtered_Count,Retention,Retention,Retention,Recall_Raw,Recall_Raw,Recall_Raw,Recall_Filtered,Recall_Filtered,Recall_Filtered
+,mean,ci_low,ci_high,mean,ci_low,ci_high,mean,ci_low,ci_high,mean,ci_low,ci_high,mean,ci_low,ci_high
+Class,,,,,,,,,,,,,,,
+Aggregate,500.0,500.0,500.0,109.1,105.59473965900908,112.60526034099091,0.2182,0.2111894793180182,0.22521052068198186,1.0,1.0,1.0,0.2182,0.2111894793180182,0.22521052068198186
+Mobile Contaminants,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Pure Noise,0.15,-0.07902775687968244,0.37902775687968243,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+Singular Interaction,1000.0,1000.0,1000.0,992.5,991.0634890634383,993.9365109365617,0.9925,0.9910634890634383,0.9939365109365618,1.0,1.0,1.0,0.9925,0.9910634890634383,0.9939365109365618

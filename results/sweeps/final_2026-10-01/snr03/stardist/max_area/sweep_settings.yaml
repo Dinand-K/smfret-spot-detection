@@ -1,0 +1,25 @@
+profile: snr03
+repeats: 2
+algorithm: stardist
+stage: selection
+params:
+  max_area:
+  - 30
+  - 35
+  - 40
+  - 45
+  - 50
+  - 55
+  - 60
+  - 70
+  - 80
+  - 100
+  - 1000
+overrides:
+  max_area: 1000
+  max_eccentricity: 1.0
+  min_mean_intensity: 0.275
+  prob_threshold: 0.04
+  max_mean_intensity: 0.45
+tuning_data_dir: data_simulation/tuning/final_2026-10-01/snr03
+results_dir: results/sweeps/final_2026-10-01/snr03/stardist/max_area

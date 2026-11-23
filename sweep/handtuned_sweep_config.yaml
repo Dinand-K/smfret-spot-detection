@@ -1,0 +1,19 @@
+# Settings for a manual sweep (run_all.py writes its own). Run from the project folder:
+#   snakemake -s sweep/sweep.smk --workflow-profile profiles/sweep --config sweep_config=sweep/handtuned_sweep_config.yaml
+
+profile: snr03
+algorithm: stardist     #name of an algorithm block in the config (for now papylio or stardist)
+stage: detection        #detection or selection
+repeats: 2              #number of tuning videos
+
+#swept parameters with their values
+#two or more parameters does joint sweep: {neighbourhood_size_max: [5, 10], fraction_difference: [0.3, 0.5]} so 2x2=4 runs
+#important: Write whole numbers as integers, so 10 and not 10.0
+
+params:
+  prob_threshold: [0.03, 0.05, 0.1, 0.2]
+
+overrides: {}           # other parameters fixed for the whole sweep, such as min_mean_donor_intensity: 0
+
+tuning_data_dir: data_simulation/tuning/manual/snr03
+results_dir: results/sweeps/manual/snr03/stardist/prob_threshold

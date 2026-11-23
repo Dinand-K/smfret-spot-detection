@@ -1,0 +1,98 @@
+###Global Pipeline Settings###
+repeats: 20  # tuned by run_all.py (final_2026-10-01)
+matching_threshold: 1
+use_real_data: false  # True for Real Data, false for Simulation
+#if use_real_data, set repeats to ONE!! 
+
+###Simulation Configuration###
+simulation:
+  # General Image Settings
+  global_settings:
+    n_frames: 500
+    img_size: 512
+    background_level: 15
+    read_noise: 110
+    seed: 2000  # base seed
+    margin: 12 
+
+  stationary:
+    activate: true
+    type: "stationary"
+    display_name: "Singular Interaction"
+    count: 1000
+    params:
+      fret_means: [0.2, 0.8]
+      fret_stds: [0.04, 0.04]
+      brightness_range: [4.0, 12.0] #General rule: brightness is total max intensity, multiplied by trace to get "intensity"; per frame
+      pi: [0.5, 0.5]  # initial state distribution (low, high FRET) = the long-run distribution of the symmetric trans_matrix, so molecules start at equilibrium
+      trans_matrix: [[0.95, 0.05], [0.05, 0.95]]
+
+  aggregate:
+    activate: true
+    type: "aggregate"
+    display_name: "Aggregate"
+    count: 500
+    params:
+      aggpair_count_range: [3, 6]
+      aggpair_brightness_mean: 4.0
+      aggpair_brightness_cv: 0.1
+      aggpair_pi: [0.5, 0.5]  # initial FRET state of each pair in an aggregate (low, high) = long-run distribution, so pairs start at equilibrium
+      aggpair_fret_means: [0.2, 0.8]
+      aggpair_fret_stds: [0.15, 0.15]
+      aggpair_trans_matrix: [[0.95, 0.05], [0.05, 0.95]]
+      jitter_std: 0.45
+
+  moving:
+    activate: true
+    type: "random_walk"
+    display_name: "Mobile Contaminants"
+    count: 500
+    params:
+      # INTENSITY MATCHING:
+      # Old Sim: [10.0, 20.0]. Matches exactly.
+      brightness_range: [10.0, 20.0]
+      step_size: 4
+      min_life: 5
+      max_life: 50
+      fade_len: 0  # frames of linear fade-in and fade-out at the start/end of a walker's lifetime (0 = switches on/off instantly)
+
+###Algorithm Configuration###
+algorithms:
+  papylio:
+    activate: true
+    display_name: "Papylio"
+    serial_lock_cost: 1
+    threads: 1
+    params:
+      max_rolling_donor_intensity: 4500  # tuned by run_all.py (final_2026-10-01)
+      min_mean_donor_intensity: 200  # tuned by run_all.py (final_2026-10-01)
+      fraction_difference: 0.3  # tuned by run_all.py (final_2026-10-01)
+      neighbourhood_size_min: 10
+      neighbourhood_size_max: 5  # tuned by run_all.py (final_2026-10-01)
+      projection_max_frame: 500
+      edge_margin: 10
+      gaussian_fit_width: 9
+      rolling_window_size: 20
+
+  stardist:
+    activate: true
+    display_name: "StarDist"
+    serial_lock_cost: 0
+    threads: 4
+    params:
+      channel_index: 0
+      edge_margin: 10
+      norm_percentile_min: 1.0
+      norm_percentile_max: 99.8
+      axis_norm: [0, 1]
+      model_name: '2D_versatile_fluo'
+      prob_threshold: 0.15  # tuned by run_all.py (final_2026-10-01)
+      nms_threshold: 0.3 # 2D_versatile_fluo model default
+      # selection filters (mask shape and intensity) + tophat_radius (background removal before detection)
+      tophat_radius: 14
+      min_area: 10
+      max_area: 60  # tuned by run_all.py (final_2026-10-01)
+      min_mean_intensity: 0  # tuned by run_all.py (final_2026-10-01)
+      max_mean_intensity: 0.3  # tuned by run_all.py (final_2026-10-01)
+      max_eccentricity: 0.85  # tuned by run_all.py (final_2026-10-01)
+      min_solidity: 0.7

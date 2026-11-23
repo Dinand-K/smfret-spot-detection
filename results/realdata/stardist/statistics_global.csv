@@ -1,0 +1,6 @@
+,Raw,Raw,Raw,Filtered,Filtered,Filtered
+,mean,ci_low,ci_high,mean,ci_low,ci_high
+Metric,,,,,,
+Global_F1_Score,0.7984790874524715,,,0.639225181598063,,
+Global_Precision,0.6907894736842105,,,0.6910994764397905,,
+Global_Recall,0.945945945945946,,,0.5945945945945946,,

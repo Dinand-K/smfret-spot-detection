@@ -1,0 +1,58 @@
+#Settings for run_all.py. Run from the project folder, in the snakemake environment: python run_all.py
+
+#run_all.py combines the optimal parameter search sweep and the final runs for all chosen noise profiles.
+# it writes the chosen sweep values into each config and puts the final results in results 
+
+
+run_name: final_2026-10-01        #foldername for the sweeps and sweep videos in the results and in he data simulation folders
+profiles: [snr709, snr2, snr05, snr03]
+tuning_repeats: 2                 #amount of videos used to tune parameters per profile
+final_repeats: 20                 #simulated videos per profile in the final benchmarking runs
+
+#best sweep value is found by detection F2-score and selection F1 score.
+#on a tie (for jointly swept parameters) the lower median best sweep value is chosen
+
+#One parameter = a normal sweep
+#two or more = a joint sweep over every combination (n x m runs for two).
+#for tightly linked parameters a joint sweep is implemented, for non tightly linked ones we dont do it to save on compute
+
+#start_overrides are fixed at a value from the start.
+#Every parameter that is used by an earlier step but swept only later gets a start value here, so the result does not depend on what an earlier run left behind. That value is just the "off" value, so very high for any max thresholds or 0 for any min.
+#Parameters that are not swept: the script keeps the value from the configs in config/(profile)
+
+
+sweeps:
+  papylio:
+    start_overrides: {min_mean_donor_intensity: 0}   # min check off while the max is tuned
+    steps: # List to ensure order
+      - stage: detection #stage decides F2 or F1-based best parameter choise in sweep
+        params:
+          neighbourhood_size_max: [5, 10]
+          fraction_difference: [0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.2, 1.5]
+      - stage: selection
+        params:
+          max_rolling_donor_intensity: [2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000, 20000] #also includes the very high value 20000 to check what happens if step is turned off
+      - stage: selection
+        params:
+          min_mean_donor_intensity: [0, 200, 300, 400, 500, 600, 800, 1000, 1500]
+  stardist:
+    start_overrides: {max_area: 1000, max_eccentricity: 1.0, min_mean_intensity: 0}   #later filters off while the earlier ones are tuned
+    steps:  
+      - stage: detection
+        params:
+          prob_threshold: [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.1, 0.15, 0.2, 0.3, 0.5]
+      - stage: selection
+        params:
+          max_mean_intensity: [0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 2.0]
+      - stage: selection
+        params:
+          min_mean_intensity: [0, 0.05, 0.1, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.4]
+      - stage: selection
+        params:
+          max_area: [30, 35, 40, 45, 50, 55, 60, 70, 80, 100, 1000]
+      - stage: selection 
+        params:
+          max_eccentricity: [0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1.0]
+
+#Real data is not a  part of run_all.py, will be run by hand using
+#snakemake --config profile=realdata

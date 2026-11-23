@@ -1,0 +1,18 @@
+###Pipeline Execution Settings###
+cores: 4
+use-conda: true
+printshellcmds: true
+rerun-incomplete: true
+
+forcerun:
+#  - generate_data
+  - run_algorithm
+#  - matching_benchmarking
+
+resources:
+  - serial_lock=1 #Papylio uses one working folder so no runs can overlap
+
+set-threads:
+  - generate_data=2
+
+#dry-run: true

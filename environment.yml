@@ -1,0 +1,12 @@
+name: snakemake
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.13.7
+  - snakemake=9.10.1
+  - numpy=2.3.2
+  - pandas=2.3.2
+  - scipy=1.16.1
+  - tifffile=2025.8.28
+  - pyyaml=6.0.2

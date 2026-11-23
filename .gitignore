@@ -1,0 +1,22 @@
+#large files
+*.tif
+*.tiff
+data_simulation/
+
+#images and documents
+*.png
+*.docx
+
+#python and snakemake
+.snakemake/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+#environments
+.venv/
+venv/
+env/
+
+#papylio working folder made in runs by papylio wrapper
+algorithms/papylio/

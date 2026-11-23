@@ -1,0 +1,24 @@
+profile: snr2
+repeats: 2
+algorithm: papylio
+stage: detection
+params:
+  neighbourhood_size_max:
+  - 5
+  - 10
+  fraction_difference:
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  - 1.0
+  - 1.2
+  - 1.5
+overrides:
+  intensity_end_min_threshold: 0
+tuning_data_dir: data_simulation/tuning/final_2026-10-01/snr2
+results_dir: results/sweeps/final_2026-10-01/snr2/papylio/neighbourhood_size_max__fraction_difference
