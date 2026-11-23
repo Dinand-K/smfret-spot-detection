@@ -11,7 +11,7 @@ A Snakemake pipeline (snakefile) simulates videos at four noise levels, or runs 
 The code was made on Windows 11 and also works on Linux. Conda is required. It can be installed by running:
 
 ```
-git clone https://github.com/<user>/smfret-spot-detection.git
+git clone https://github.com/Dinand-K/smfret-spot-detection.git
 cd smfret-spot-detection
 conda env create -f environment.yml
 conda activate snakemake
