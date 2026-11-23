@@ -54,7 +54,7 @@ snakemake -s sweep/matching_threshold_snr03.smk --workflow-profile profiles/swee
 
 ## Acknowledgements
 
-Developed in the Joo Lab at TU Delft under the supervision of Prof. Dr. C. Joo and Dr. C. de Lannoy.
+Developed in the Joo Lab at TU Delft. The benchmark started as a bachelor end project supervised by Dr. C. de Lannoy and Prof. Dr. C. Joo, and was developed into this preprint under the supervision of Prof. Dr. C. Joo. Dr. C. de Lannoy also recorded the experimental video.
 
 ## References
 
